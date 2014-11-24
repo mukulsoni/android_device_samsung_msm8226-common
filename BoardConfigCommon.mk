@@ -116,7 +116,6 @@ COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 # Time services
 #BOARD_USES_QC_TIME_SERVICES := true
 
-
 # Use seperate speakerphone device
 BOARD_USES_SEPERATED_VOICE_SPEAKER := true
 
