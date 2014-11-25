@@ -242,9 +242,9 @@ PRODUCT_PACKAGES += \
     hostapd.deny \
     hostapd \
     wpa_supplicant \
-    wpa_supplicant.conf
 
 PRODUCT_PACKAGES += \
+    wpa_supplicant.conf \
     p2p_supplicant_overlay.conf \
     wpa_supplicant_overlay.conf
 
@@ -256,15 +256,3 @@ PRODUCT_PACKAGES += \
     libqsap_sdk \
     libQWiFiSoftApCfg \
     wcnss_service
-
-# These are the hardware-specific settings that are stored in system properties.
-# Note that the only such settings should be the ones that are too low-level to
-# be reachable from resources or other mechanisms.
-PRODUCT_PROPERTY_OVERRIDES += \
-  wifi.interface=wlan0 \
-  mobiledata.interfaces=rmnet0
-
-# RIL
-#PRODUCT_PROPERTY_OVERRIDES += \
-	ro.ril.hsxpa=1 \
-	ro.ril.gprsclass=10
