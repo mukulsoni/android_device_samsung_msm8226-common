@@ -460,7 +460,6 @@ typedef struct {
     float   elevation;
     /** Azimuth of SV in degrees. */
     float   azimuth;
-
     int used;
 } GpsSvInfo;
 
@@ -1809,3 +1808,4 @@ typedef struct {
 __END_DECLS
 
 #endif /* ANDROID_INCLUDE_HARDWARE_GPS_H */
+

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <mixer>
-	<!-- SM-G7102_CIS_KK (MS01) ======================================= -->
+	<!-- GT-I9301I_EUR_XX (s3ve3g) ======================================= -->
 	<!-- These are the initial mixer settings -->
 	<!-- reset RX part -->
 	<ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia1" value="0" />
@@ -87,40 +87,6 @@
 	<ctl name="DEC3 MUX" value="ZERO" />
 	<ctl name="DEC2 MUX" value="ZERO" />
 	<ctl name="DEC1 MUX" value="ZERO" />
-        <ctl name="IIR1 INP1 Volume" value="84" />
-        <ctl name="IIR1 INP2 Volume" value="84" />
-        <ctl name="IIR1 INP3 Volume" value="84" />
-        <ctl name="IIR1 INP4 Volume" value="84" />
-        <ctl name="IIR1 Band1" id ="0" value="268435456" />
-        <ctl name="IIR1 Band1" id ="1" value="0" />
-        <ctl name="IIR1 Band1" id ="2" value="0" />
-        <ctl name="IIR1 Band1" id ="3" value="0" />
-        <ctl name="IIR1 Band1" id ="4" value="0" />
-        <ctl name="IIR1 Band2" id ="0" value="268435456" />
-        <ctl name="IIR1 Band2" id ="1" value="0" />
-        <ctl name="IIR1 Band2" id ="2" value="0" />
-        <ctl name="IIR1 Band2" id ="3" value="0" />
-        <ctl name="IIR1 Band2" id ="4" value="0" />
-        <ctl name="IIR1 Band3" id ="0" value="268435456" />
-        <ctl name="IIR1 Band3" id ="1" value="0" />
-        <ctl name="IIR1 Band3" id ="2" value="0" />
-        <ctl name="IIR1 Band3" id ="3" value="0" />
-        <ctl name="IIR1 Band3" id ="4" value="0" />
-        <ctl name="IIR1 Band4" id ="0" value="268435456" />
-        <ctl name="IIR1 Band4" id ="1" value="0" />
-        <ctl name="IIR1 Band4" id ="2" value="0" />
-        <ctl name="IIR1 Band4" id ="3" value="0" />
-        <ctl name="IIR1 Band4" id ="4" value="0" />
-        <ctl name="IIR1 Band5" id ="0" value="268435456" />
-        <ctl name="IIR1 Band5" id ="1" value="0" />
-        <ctl name="IIR1 Band5" id ="2" value="0" />
-        <ctl name="IIR1 Band5" id ="3" value="0" />
-        <ctl name="IIR1 Band5" id ="4" value="0" />
-        <ctl name="IIR1 Enable Band1" value="0" />
-        <ctl name="IIR1 Enable Band2" value="0" />
-        <ctl name="IIR1 Enable Band3" value="0" />
-        <ctl name="IIR1 Enable Band4" value="0" />
-        <ctl name="IIR1 Enable Band5" value="0" />    
 	<!-- end of initial mixer settings -->
 
 	<!-- ================================================================ -->
@@ -214,11 +180,6 @@
     </path>
 
 	<!-- call part -->
-	<path name="voice-call-cp2">
-		<ctl name="SLIM_0_RX_Voice Mixer Voice2" value="1" />
-		<ctl name="Voice2_Tx Mixer SLIM_0_TX_Voice2" value="1" />
-	</path>
-
 	<path name="voice-call">
 		<ctl name="SLIM_0_RX_Voice Mixer CSVoice" value="1" />
 		<ctl name="Voice_Tx Mixer SLIM_0_TX_Voice" value="1" />
@@ -229,11 +190,6 @@
 		<ctl name="Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice" value="1" />
 	</path>
 
-	<path name="voice-call-cp2 bt-sco">
-		<ctl name="INTERNAL_BT_SCO_RX_Voice Mixer Voice2" value="1" />
-		<ctl name="Voice2_Tx Mixer INTERNAL_BT_SCO_TX_Voice2" value="1" />
-	</path>
-	
 	<path name="voip-call">
 		<ctl name="SLIM_0_RX_Voice Mixer Voip" value="1" />
 		<ctl name="Voip_Tx Mixer SLIM_0_TX_Voip" value="1" />
@@ -291,8 +247,8 @@
 		<ctl name="SLIM RX1 MUX" value="AIF1_PB" />
 		<ctl name="SLIM RX2 MUX" value="AIF1_PB" />
 		<ctl name="SLIM_0_RX Channels" value="Two" />
-		<ctl name="RX1 MIX1 INP1" value="RX2" />
-		<ctl name="RX2 MIX1 INP1" value="RX1" />
+		<ctl name="RX1 MIX1 INP1" value="RX1" />
+		<ctl name="RX2 MIX1 INP1" value="RX2" />
 		<ctl name="RX4 MIX1 INP1" value="RX1" />
 		<ctl name="RX4 MIX1 INP2" value="RX2" />
 		<ctl name="CLASS_H_DSM MUX" value="RX_HPHL" />
@@ -363,13 +319,13 @@
 	<!-- Play Scenario	-->
 	<path name="handset">
 		<path name="rcv" />
-		<ctl name="RX1 Digital Volume" value="77" />
 		<ctl name="EAR PA Gain" value="POS_2_DB" />
+		<ctl name="RX1 Digital Volume" value="83" />
 	</path>
 
 	<path name="speaker">
 		<path name="spk" />
-		<ctl name="RX4 Digital Volume" value="84" />
+		<ctl name="RX4 Digital Volume" value="83" />
 		<ctl name="SPK DRV Volume" value="7" />
 		<ctl name="COMP0 Switch" value="0" />
 	</path>
@@ -378,17 +334,14 @@
 		<path name="ear" />
 		<ctl name="HPHL Volume" value="16" />
 		<ctl name="HPHR Volume" value="16" />
-		<ctl name="RX1 Digital Volume" value="78" />
-		<ctl name="RX2 Digital Volume" value="78" />
+		<ctl name="RX1 Digital Volume" value="84" />
+		<ctl name="RX2 Digital Volume" value="84" />
 	</path>
 
 	<path name="dock">
-		<ctl name="SLIM_0_RX Channels" value="Two" />
-		<ctl name="SLIM RX1 MUX" value="AIF1_PB" />
-		<ctl name="SLIM RX2 MUX" value="AIF1_PB" />
+		<path name="lineout" />
 		<ctl name="RX3 MIX1 INP1" value="RX1" />
 		<ctl name="RX4 MIX1 INP1" value="RX2" />
-                <ctl name="RDAC5 MUX" value="DEM4" />		
 		<ctl name="RX3 Digital Volume" value="85" />
 		<ctl name="RX4 Digital Volume" value="85" />
 	</path>
@@ -397,12 +350,11 @@
 		<path name="spk-ear" />
 		<ctl name="HPHL Volume" value="5" />
 		<ctl name="HPHR Volume" value="5" />
-		<ctl name="RX1 Digital Volume" value="63" />
-		<ctl name="RX2 Digital Volume" value="63" />
-		<ctl name="RX4 Digital Volume" value="83" />
+		<ctl name="RX1 Digital Volume" value="66" />
+		<ctl name="RX2 Digital Volume" value="66" />
+		<ctl name="RX4 MIX1 INP2" value="RX2" />
+		<ctl name="RX4 Digital Volume" value="78" />
 		<ctl name="SPK DRV Volume" value="7" />
-		<ctl name="COMP0 Switch" value="0" />
-		<ctl name="COMP1 Switch" value="0" />
 	</path>
 
 	<path name="speaker-and-hdmi">
@@ -430,22 +382,17 @@
 	<!-- FM Scenario -->
 	<!-- RX part -->
 	<path name="fm-speaker">
-		<ctl name="SLIM_0_RX Channels" value="One" />
-		<ctl name="RX4 MIX1 INP1" value="RX1" />
-		<ctl name="SLIM RX1 MUX" value="AIF1_PB" />		
-		<ctl name="SPK DAC Switch" value="1" />
-		<ctl name="RX4 Digital Volume" value="83" />
-		<ctl name="SPK DRV Volume" value="8" />
-		<ctl name="COMP0 Switch" value="0" />
+		<path name="spk" />
+		<ctl name="RX4 Digital Volume" value="84" />
+		<ctl name="SPK DRV Volume" value="6" />
 	</path>
 
 	<path name="fm-headset">
 		<path name="ear" />
-		<ctl name="HPHR DAC Switch" value="1" />
-		<ctl name="HPHL Volume" value="20" />
-		<ctl name="HPHR Volume" value="20" />
-		<ctl name="RX1 Digital Volume" value="84" />
-		<ctl name="RX2 Digital Volume" value="84" />
+		<ctl name="HPHL Volume" value="13" />
+		<ctl name="HPHR Volume" value="13" />
+		<ctl name="RX1 Digital Volume" value="86" />
+		<ctl name="RX2 Digital Volume" value="86" />
 	</path>
 	
 	<path name="transmission-fm">
@@ -470,8 +417,8 @@
 	<!-- Recording Scenario	-->
 	<path name="rec-main-mic">
 		<path name="main-mic" />
-		<ctl name="ADC1 Volume" value="19" />
-		<ctl name="DEC1 Volume" value="83" />
+		<ctl name="ADC1 Volume" value="13" />
+		<ctl name="DEC1 Volume" value="84" />
 	</path>
 
 	<path name="rec-sub-mic">
@@ -482,20 +429,22 @@
 
 	<path name="rec-headset-mic">
 		<path name="ear-mic" />
-		<ctl name="DEC1 Volume" value="83" />
 		<ctl name="ADC2 Volume" value="19" />
+		<ctl name="DEC1 Volume" value="83" />
 	</path>
 
 	<path name="rec-stereo-mic">
 		<path name="main-mic" />
+		<path name="sub-mic" />
+		<ctl name="DEC1 MUX" value="ADC1" />
 		<ctl name="ADC1 Volume" value="19" />
 		<ctl name="DEC1 Volume" value="83" />
 	</path>
 
 	<path name="rec-high-gain-main-mic">
 		<path name="main-mic" />
-		<ctl name="ADC1 Volume" value="11" />
-		<ctl name="DEC1 Volume" value="84" />
+		<ctl name="ADC1 Volume" value="10" />
+		<ctl name="DEC6 Volume" value="84" />
 	</path>
 
 	<path name="rec-high-gain-sub-mic">
@@ -506,8 +455,8 @@
 
 	<path name="rec-high-gain-headset-mic">
 		<path name="ear-mic" />
-		<ctl name="ADC2 Volume" value="19" />
-		<ctl name="DEC1 Volume" value="83" />
+		<ctl name="ADC2 Volume" value="10" />
+		<ctl name="DEC1 Volume" value="84" />
 	</path>
 
 	<path name="rec-high-gain-stereo-mic">
@@ -526,13 +475,13 @@
 	<path name="vr-main-mic">
 		<path name="main-mic" />
 		<ctl name="ADC1 Volume" value="19" />
-		<ctl name="DEC1 Volume" value="83" />
+		<ctl name="DEC6 Volume" value="83" />
 	</path>
 
 	<path name="vr-sub-mic">
 		<path name="sub-mic" />
 		<ctl name="ADC3 Volume" value="19" />
-		<ctl name="DEC1 Volume" value="84" />
+		<ctl name="DEC4 Volume" value="84" />
 	</path>
 
 	<path name="vr-headset-mic">
@@ -621,14 +570,14 @@
 	<!-- RX part -->
 	<path name="voice-call-handset">
 		<path name="rcv" />
-		<ctl name="RX1 Digital Volume" value="83" />
 		<ctl name="EAR PA Gain" value="POS_2_DB" />
+		<ctl name="RX1 Digital Volume" value="83" />
 	</path>
 
 	<path name="voice-call-handset-extra-vol">
 		<path name="rcv" />
-		<ctl name="RX1 Digital Volume" value="83" />
 		<ctl name="EAR PA Gain" value="POS_2_DB" />
+		<ctl name="RX1 Digital Volume" value="83" />
 	</path>
 
 	<path name="voice-call-handset-hac">
@@ -639,67 +588,22 @@
 
 	<path name="voice-call-speaker">
 		<path name="spk" />
-		<ctl name="RX4 Digital Volume" value="83" />
-		<ctl name="SPK DRV Volume" value="6" />
+		<ctl name="RX4 Digital Volume" value="90" />
+		<ctl name="SPK DRV Volume" value="8" />
 	</path>
 
 	<path name="voice-call-speaker-extra-vol">
 		<path name="spk" />
-		<ctl name="RX4 Digital Volume" value="83" />
-		<ctl name="SPK DRV Volume" value="6" />
+		<ctl name="RX4 Digital Volume" value="90" />
+		<ctl name="SPK DRV Volume" value="8" />
 	</path>
 
 	<path name="voice-call-headset">
 		<path name="ear" />
-		<ctl name="HPHL Volume" value="13" />
-		<ctl name="HPHR Volume" value="13" />
-		<ctl name="RX1 Digital Volume" value="87" />
-		<ctl name="RX2 Digital Volume" value="87" />
-		<ctl name="IIR1 INP1 Volume" value="46" />
-		<ctl name="RX1 MIX2 INP1" value="IIR1" />
-		<ctl name="RX2 MIX2 INP1" value="IIR1" />
-		<ctl name="COMP1 Switch" value="0" />
-	</path>
-	<path name="voice-call-cp2-handset">
-		<path name="rcv" />
-		<ctl name="RX1 Digital Volume" value="83" />
-		<ctl name="EAR PA Gain" value="POS_2_DB" />
-	</path>
-
-	<path name="voice-call-cp2-handset-extra-vol">
-		<path name="rcv" />
-		<ctl name="RX1 Digital Volume" value="83" />
-		<ctl name="EAR PA Gain" value="POS_2_DB" />
-	</path>
-
-	<path name="voice-call-cp2-handset-hac">
-		<path name="rcv" />
-		<ctl name="EAR PA Gain" value="POS_3_DB" />
-		<ctl name="RX1 Digital Volume" value="84" />
-	</path>
-
-	<path name="voice-call-cp2-speaker">
-		<path name="spk" />
-		<ctl name="RX4 Digital Volume" value="83" />
-		<ctl name="SPK DRV Volume" value="8" />
-	</path>
-
-	<path name="voice-call-cp2-speaker-extra-vol">
-		<path name="spk" />
-		<ctl name="RX4 Digital Volume" value="83" />
-		<ctl name="SPK DRV Volume" value="8" />
-	</path>
-
-	<path name="voice-call-cp2-headset">
-		<path name="ear" />
 		<ctl name="HPHL Volume" value="16" />
 		<ctl name="HPHR Volume" value="16" />
-		<ctl name="RX1 Digital Volume" value="83" />
-		<ctl name="RX2 Digital Volume" value="83" />
-		<ctl name="IIR1 INP1 Volume" value="46" />
-		<ctl name="RX1 MIX2 INP1" value="IIR1" />
-		<ctl name="RX2 MIX2 INP1" value="IIR1" />
-		
+		<ctl name="RX1 Digital Volume" value="84" />
+		<ctl name="RX2 Digital Volume" value="84" />
 	</path>
 
 	<path name="voice-call-dock">
@@ -730,8 +634,8 @@
 
 	<path name="voice-call-headset-mic">
 		<path name="ear-mic" />
-		<ctl name="DEC1 Volume" value="83" />
 		<ctl name="ADC2 Volume" value="19" />
+		<ctl name="DEC1 Volume" value="83" />
 	</path>
 
 	<path name="voice-call-NS-mic-handset">
@@ -748,52 +652,6 @@
 	</path>
 
 	<path name="voice-call-NS-mic-speaker">
-		<path name="sub-mic" />
-		<path name="3rd-mic" />
-		<ctl name="SLIM_0_TX Channels" value="Two" />
-		<ctl name="ADC4 Volume" value="16" />
-		<ctl name="DEC3 Volume" value="84" />
-		<ctl name="ADC3 Volume" value="16" />
-		<ctl name="DEC4 Volume" value="84" />
-	</path>
-	<path name="voice-call-cp2-main-mic">
-		<path name="main-mic" />
-		<ctl name="ADC1 Volume" value="19" />
-		<ctl name="DEC1 Volume" value="83" />
-	</path>
-
-	<path name="voice-call-cp2-sub-mic">
-		<path name="sub-mic" />
-		<ctl name="ADC3 Volume" value="19" />
-		<ctl name="DEC1 Volume" value="84" />
-	</path>
-
-	<path name="voice-call-cp2-headphone-mic">
-		<path name="main-mic" />
-		<ctl name="ADC1 Volume" value="19" />
-		<ctl name="DEC1 Volume" value="83" />
-	</path>
-
-	<path name="voice-call-cp2-headset-mic">
-		<path name="ear-mic" />
-		<ctl name="ADC2 Volume" value="19" />
-		<ctl name="DEC1 Volume" value="83" />
-	</path>
-
-	<path name="voice-call-cp2-NS-mic-handset">
-		<path name="main-mic" />
-		<path name="sub-mic" />
-		<ctl name="SLIM_0_TX Channels" value="Two" />
-		<ctl name="ADC1 Volume" value="19" />
-		<ctl name="DEC6 Volume" value="84" />
-		<ctl name="ADC3 Volume" value="19" />
-		<ctl name="DEC4 Volume" value="84" />
-		<ctl name="TX3 HPF cut off" value="MIN_3DB_150Hz" />
-		<ctl name="TX4 HPF cut off" value="MIN_3DB_150Hz" />
-		<ctl name="TX5 HPF cut off" value="MIN_3DB_150Hz" />
-	</path>
-
-	<path name="voice-call-cp2-NS-mic-speaker">
 		<path name="sub-mic" />
 		<path name="3rd-mic" />
 		<ctl name="SLIM_0_TX Channels" value="Two" />
@@ -821,8 +679,8 @@
 
 	<path name="video-call-handset-extra-vol">
 		<path name="rcv" />
-		<ctl name="EAR PA Gain" value="POS_2_DB" />
-		<ctl name="RX1 Digital Volume" value="83" />
+		<ctl name="EAR PA Gain" value="POS_3_DB" />
+		<ctl name="RX1 Digital Volume" value="84" />
 	</path>
 
 	<path name="video-call-speaker">
@@ -843,9 +701,6 @@
 		<ctl name="HPHR Volume" value="16" />
 		<ctl name="RX1 Digital Volume" value="83" />
 		<ctl name="RX2 Digital Volume" value="83" />
-		<ctl name="IIR1 INP1 Volume" value="46" />
-		<ctl name="RX1 MIX2 INP1" value="IIR1" />
-		<ctl name="RX2 MIX2 INP1" value="IIR1" />
 	</path>
 
 	<path name="video-call-dock">
@@ -876,8 +731,8 @@
 
 	<path name="video-call-headset-mic">
 		<path name="ear-mic" />
-		<ctl name="DEC1 Volume" value="83" />
 		<ctl name="ADC2 Volume" value="19" />
+		<ctl name="DEC1 Volume" value="83" />
 		<ctl name="COMP1 Switch" value="1" />
 	</path>
 
@@ -1093,24 +948,17 @@
 	</path>
 
 	<path name="TTY-headset">
-		<ctl name="SLIM RX1 MUX" value="AIF1_PB" />
+		<path name="ear" />
 		<ctl name="TTY Mode" value="VCO" />
 		<ctl name="SLIM_0_RX Channels" value="One" />
-		<ctl name="RX1 MIX1 INP1" value="RX1" />
-		<ctl name="CLASS_H_DSM MUX" value="RX_HPHL" />
-		<ctl name="HPHL DAC Switch" value="1" />
 		<ctl name="HPHL Volume" value="16" />
 		<ctl name="RX1 Digital Volume" value="83" />
-		<ctl name="COMP1 Switch" value="1" />
 	</path>
 
 	<path name="TTY-full">
-		<ctl name="SLIM RX1 MUX" value="AIF1_PB" />
+		<path name="ear" />
 		<ctl name="TTY Mode" value="FULL" />
 		<ctl name="SLIM_0_RX Channels" value="One" />
-		<ctl name="RX1 MIX1 INP1" value="RX1" />
-		<ctl name="CLASS_H_DSM MUX" value="RX_HPHL" />
-		<ctl name="HPHL DAC Switch" value="1" />
 		<ctl name="HPHL Volume" value="16" />
 		<ctl name="RX1 Digital Volume" value="83" />
 	</path>
@@ -1141,8 +989,9 @@
 	<!-- RX part -->
 	<path name="voip-handset-comm">
 		<path name="rcv" />
-		<ctl name="RX1 Digital Volume" value="83" />
+		<ctl name="SLIM_0_RX Channels" value="One" />
 		<ctl name="EAR PA Gain" value="POS_2_DB" />
+		<ctl name="RX1 Digital Volume" value="83" />
 		<ctl name="DAC1 Switch" value="1" />
 	</path>
 
@@ -1155,17 +1004,16 @@
 	<path name="voip-headset-comm">
 		<path name="ear" />
 		<ctl name="HPHL DAC Switch" value="1" />
-		<ctl name="HPHL Volume" value="14" />
-		<ctl name="HPHR Volume" value="14" />
-		<ctl name="RX1 Digital Volume" value="78" />
-		<ctl name="RX2 Digital Volume" value="78" />
-		<ctl name="COMP1 Switch" value="0" />
+		<ctl name="HPHL Volume" value="16" />
+		<ctl name="HPHR Volume" value="16" />
+		<ctl name="RX1 Digital Volume" value="83" />
+		<ctl name="RX2 Digital Volume" value="83" />
 	</path>
 
 	<path name="voip-handset-others">
 		<path name="rcv" />
-		<ctl name="RX1 Digital Volume" value="83" />
 		<ctl name="EAR PA Gain" value="POS_2_DB" />
+		<ctl name="RX1 Digital Volume" value="83" />
 	</path>
 
 	<path name="voip-speaker-others">
@@ -1176,10 +1024,10 @@
 
 	<path name="voip-headset-others">
 		<path name="ear" />
-		<ctl name="HPHL Volume" value="14" />
-		<ctl name="HPHR Volume" value="14" />
-		<ctl name="RX1 Digital Volume" value="78" />
-		<ctl name="RX2 Digital Volume" value="78" />
+		<ctl name="HPHL Volume" value="16" />
+		<ctl name="HPHR Volume" value="16" />
+		<ctl name="RX1 Digital Volume" value="83" />
+		<ctl name="RX2 Digital Volume" value="83" />
 	</path>
 
 	<path name="voip-handset-chaton">
@@ -1205,8 +1053,8 @@
 
 	<path name="voip-handset-carrier">
 		<path name="rcv" />
-		<ctl name="RX1 Digital Volume" value="83" />
 		<ctl name="EAR PA Gain" value="POS_2_DB" />
+		<ctl name="RX1 Digital Volume" value="83" />
 	</path>
 
 	<path name="voip-speaker-carrier">
@@ -1250,13 +1098,14 @@
 	<path name="voip-headphone-mic-comm">
 		<path name="main-mic" />
 		<ctl name="ADC1 Volume" value="19" />
-		<ctl name="DEC1 Volume" value="83" />
+		<ctl name="DEC6 Volume" value="83" />
 	</path>
 
 	<path name="voip-headset-mic-comm">
 		<path name="ear-mic" />
 		<ctl name="ADC2 Volume" value="19" />
-		<ctl name="DEC1 Volume" value="83" />
+		<ctl name="DEC5 Volume" value="83" />
+		<ctl name="IIR1 INP1 MUX" value="ZERO" />
 	</path>
 
 	<path name="voip-main-mic-others">
@@ -1354,8 +1203,8 @@
 	<!-- RX part -->
 	<path name="loopback-handset-DSP">
 		<path name="rcv" />
-		<ctl name="RX1 Digital Volume" value="92" />
 		<ctl name="EAR PA Gain" value="POS_2_DB" />
+		<ctl name="RX1 Digital Volume" value="102" />
 	</path>
 
 	<path name="loopback-speaker-DSP">
@@ -1365,14 +1214,8 @@
 	</path>
 
 	<path name="loopback-headset-DSP">
-		<ctl name="SLIM RX1 MUX" value="AIF1_PB" />
-		<ctl name="SLIM RX2 MUX" value="AIF1_PB" />
-		<ctl name="SLIM_0_RX Channels" value="Two" />
-		<ctl name="RX1 MIX1 INP1" value="RX1" />
-		<ctl name="RX2 MIX1 INP1" value="RX2" />
-		<ctl name="CLASS_H_DSM MUX" value="RX_HPHL" />
-		<ctl name="HPHL DAC Switch" value="1" />
-                <ctl name="HPHL Volume" value="16" />
+		<path name="ear" />
+		<ctl name="HPHL Volume" value="16" />
 		<ctl name="HPHR Volume" value="16" />
 		<ctl name="RX1 Digital Volume" value="83" />
 		<ctl name="RX2 Digital Volume" value="83" />
@@ -1380,13 +1223,14 @@
 
 	<path name="loopback-handset">
 		<path name="rcv" />
-		<ctl name="RX1 Digital Volume" value="92" />
 		<ctl name="EAR PA Gain" value="POS_3_DB" />
+		<ctl name="DAC1 Switch" value="1" />
+		<ctl name="RX1 Digital Volume" value="84" />
 	</path>
 
 	<path name="loopback-speaker">
 		<path name="spk" />
-		<ctl name="RX4 Digital Volume" value="92" />
+		<ctl name="RX4 Digital Volume" value="83" />
 		<ctl name="SPK DRV Volume" value="8" />
 	</path>
 
@@ -1422,7 +1266,7 @@
 	<path name="loopback-headphone-mic-DSP">
 		<path name="main-mic" />
 		<ctl name="ADC1 Volume" value="19" />
-		<ctl name="DEC1 Volume" value="74" />
+		<ctl name="DEC6 Volume" value="74" />
 	</path>
 
 	<path name="loopback-headset-mic-DSP">
@@ -1436,7 +1280,7 @@
 	<path name="loopback-main-mic">
 		<path name="main-mic" />
 		<ctl name="ADC1 Volume" value="19" />
-		<ctl name="DEC1 Volume" value="83" />
+		<ctl name="DEC6 Volume" value="83" />
 	</path>
 
 	<path name="loopback-sub-mic">
