@@ -193,7 +193,8 @@ PRODUCT_PACKAGES += \
     init.qcom.post_boot.sh \
     init.qcom.wifi.sh \
     init.ath3k.bt.sh \
-    init.qcom.audio.sh
+    init.qcom.audio.sh \
+    init.sec.boot.sh
 
 PRODUCT_PACKAGES += \
     init.qcom.class_core.sh \
@@ -204,9 +205,7 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.sh \
     init.qcom.usb.rc \
     ueventd.qcom.rc \
-    init.qcom.ril.sh \
     init.carrier.rc \
-    init.ril.rc \
     init.target.rc
 
 # Thermal
@@ -226,8 +225,8 @@ PRODUCT_PACKAGES += \
     dhcpcd.conf \
     hostapd.accept \
     hostapd.deny \
-    hostapd_default.conf \
     hostapd \
+    hostapd_default.conf \
     wpa_supplicant \
     wpa_supplicant.conf
 

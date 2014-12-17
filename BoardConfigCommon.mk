@@ -61,10 +61,10 @@ TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
 
 # Camera
-#COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CAMERA_HARDWARE
-#TARGET_PROVIDES_CAMERA_HAL := true
+COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CAMERA_HARDWARE
+TARGET_PROVIDES_CAMERA_HAL := true
 USE_DEVICE_SPECIFIC_CAMERA := true
-BOARD_USES_LEGACY_MMAP := true
+#BOARD_USES_LEGACY_MMAP := true
 
 # CMHW
 BOARD_HARDWARE_CLASS += hardware/samsung/cmhw
@@ -150,7 +150,7 @@ WIFI_DRIVER_MODULE_NAME          := "wlan"
 
 # SELinux policies
 # qcom sepolicy
-include device/qcom/sepolicy/sepolicy.mk
+#include device/qcom/sepolicy/sepolicy.mk
 
 # Shader cache config options
 # Maximum size of the  GLES Shaders that can be cached for reuse.

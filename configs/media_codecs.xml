@@ -188,5 +188,9 @@
         <MediaCodec name="OMX.google.h263.decoder" type="video/3gpp" />
         <MediaCodec name="OMX.google.vp8.decoder" type="video/x-vnd.on2.vp8" />
         <MediaCodec name="OMX.google.vp9.decoder" type="video/x-vnd.on2.vp9" />
+	<Include href="media_codecs_google_audio.xml" />
+	<Include href="media_codecs_google_telephony.xml" />
+	<Include href="media_codecs_google_video.xml" />
+	<Include href="media_codecs_ffmpeg.xml" />
     </Decoders>
 </CodecList>
