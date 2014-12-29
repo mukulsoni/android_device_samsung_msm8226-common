@@ -24,28 +24,25 @@ TARGET_SPECIFIC_HEADER_PATH := device/samsung/msm8226-common/include
 TARGET_BOARD_PLATFORM := msm8226
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno305
 
-# Architecture
-TARGET_ARCH := arm
-TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_CPU_ABI := armeabi-v7a
-TARGET_CPU_ABI2 := armeabi
-TARGET_CPU_VARIANT := krait
-TARGET_CPU_SMP := true
-TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
-
-# Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := MSM8226
-
 # Kernel
-BOARD_KERNEL_CMDLINE := console=null androidboot.console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37
+BOARD_KERNEL_CMDLINE := console=null androidboot.console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
 
+WLAN_MODULES:
+	mkdir -p $(KERNEL_MODULES_OUT)/pronto
+	mv $(KERNEL_MODULES_OUT)/wlan.ko $(KERNEL_MODULES_OUT)/pronto/pronto_wlan.ko
+	ln -sf /system/lib/modules/pronto/pronto_wlan.ko $(TARGET_OUT)/lib/modules/wlan.ko
+
+TARGET_KERNEL_MODULES += WLAN_MODULES
+
+# Architecture
+TARGET_CPU_VARIANT := krait
+
 # Audio
 BOARD_HAVE_NEW_QCOM_CSDCLIENT := true
 AUDIO_FEATURE_DISABLED_ANC_HEADSET := true
-AUDIO_FEATURE_DISABLED_FM := true
 AUDIO_FEATURE_DISABLED_MULTI_VOICE_SESSIONS := true
 BOARD_USES_ALSA_AUDIO := true
 TARGET_USES_QCOM_COMPRESSED_AUDIO := true
@@ -55,30 +52,33 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
+QCOM_BT_USE_SMD_TTY := true
+
+# Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := MSM8226
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
 
 # Camera
-COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CAMERA_HARDWARE
+BOARD_USES_LEGACY_MMAP := true
 TARGET_PROVIDES_CAMERA_HAL := true
 USE_DEVICE_SPECIFIC_CAMERA := true
-#BOARD_USES_LEGACY_MMAP := true
-
-# CMHW
-BOARD_HARDWARE_CLASS += hardware/samsung/cmhw
 
 # Charger
 BOARD_BATTERY_DEVICE_NAME := "battery"
-BOARD_CHARGING_CMDLINE_NAME := "androidboot.bootchg"
+BOARD_CHARGING_CMDLINE_NAME := "androidboot.mode"
 BOARD_CHARGING_CMDLINE_VALUE := "charger"
 BOARD_CHARGER_ENABLE_SUSPEND := true
+
+# CMHW
+BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/cmhw
 
 # Display
 BOARD_EGL_CFG := $(LOCAL_PATH)/configs/egl.cfg
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
-OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
+OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := true
@@ -86,48 +86,25 @@ TARGET_HW_DISK_ENCRYPTION := true
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
-# Logging
-#TARGET_USES_LOGD := false
-
-# Media
-#TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
-
 # Power
 TARGET_POWERHAL_SET_INTERACTIVE_EXT := $(LOCAL_PATH)/power/power_ext.c
 TARGET_POWERHAL_VARIANT := qcom
-
-# Qualcomm support
-BOARD_USES_QCOM_HARDWARE := true
-#COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
-#TARGET_USES_QCOM_BSP := true
-#COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
 
 # Recovery
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/msm8226-common/recovery/recovery_keys.c
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_RECOVERY_SWIPE := true
-BOARD_SUPPRESS_EMMC_WIPE := true
-BOARD_USES_MMCUTILS := true
-TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
-BOARD_HAS_LARGE_FILESYSTEM := true
-BOARD_HAS_NO_MISC_PARTITION := true
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
 
 # Use seperate speakerphone device
-#BOARD_USES_SEPERATED_VOICE_SPEAKER := true
+BOARD_USES_SEPERATED_VOICE_SPEAKER := true
 
 # Use seperate devices for VOIP
-#BOARD_USES_SEPERATED_VOIP := true
-
-# Disable initlogo, Samsungs framebuffer is weird
-#TARGET_NO_INITLOGO := true
-
-# Allow suspend in charge mode
-#BOARD_CHARGER_ENABLE_SUSPEND := true
+BOARD_USES_SEPERATED_VOIP := true
 
 # Vold
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
@@ -147,10 +124,6 @@ WIFI_DRIVER_FW_PATH_STA          := "sta"
 WIFI_DRIVER_FW_PATH_AP           := "ap"
 WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/wlan.ko"
 WIFI_DRIVER_MODULE_NAME          := "wlan"
-
-# SELinux policies
-# qcom sepolicy
-#include device/qcom/sepolicy/sepolicy.mk
 
 # Shader cache config options
 # Maximum size of the  GLES Shaders that can be cached for reuse.

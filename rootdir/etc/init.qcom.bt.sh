@@ -103,12 +103,7 @@ config_bt ()
         setprop ro.qualcomm.bluetooth.map true
         setprop ro.qualcomm.bluetooth.nap true
         setprop ro.bluetooth.sap true
-        case  $soc_hwid in
-            "109")
-                logi "Enabling BT-DUN for Fusion3"
-                setprop ro.bluetooth.dun true
-            ;;
-        esac
+        setprop ro.bluetooth.dun false
         ;;
     "msm")
         setprop ro.qualcomm.bluetooth.opp true
@@ -117,9 +112,8 @@ config_bt ()
         setprop ro.qualcomm.bluetooth.pbap true
         setprop ro.qualcomm.bluetooth.ftp true
         setprop ro.qualcomm.bluetooth.nap true
-        setprop ro.bluetooth.sap false
-        setprop ro.bluetooth.dun false
-        setprop qcom.bt.le_dev_pwr_class 1
+        setprop ro.bluetooth.sap true
+        setprop ro.bluetooth.dun true
         case $btsoc in
           "ath3k")
               setprop ro.qualcomm.bluetooth.map false
@@ -180,6 +174,12 @@ case "$stack" in
     "bluez")
 	   logi "Bluetooth stack is $stack"
 	   setprop ro.qc.bluetooth.stack $stack
+	   reason=`getprop vold.decrypt`
+	   case "$reason" in
+	       "trigger_restart_framework")
+	           start dbus
+	           ;;
+	   esac
         ;;
     *)
 	   logi "Bluetooth stack is Bluedroid"
