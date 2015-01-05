@@ -26,8 +26,8 @@
 #
 
 import init.qcom.usb.rc
-import init.carrier.rc
 import init.target.rc
+import init.carrier.rc
 
 on early-init
 
@@ -72,11 +72,29 @@ on init
 on fs
     mount_all fstab.qcom
 
+    wait /dev/block/platform/msm_sdcc.1/by-name/cache
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/cache /cache nosuid nodev noatime noauto_da_alloc,discard,journal_async_commit,errors=panic
+
+    wait /dev/block/platform/msm_sdcc.1/by-name/persist
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/persist /persist nosuid nodev noatime noauto_da_alloc,discard,journal_async_commit,errors=panic
+
+    wait /dev/block/platform/msm_sdcc.1/by-name/efs
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/efs /efs nosuid nodev noatime noauto_da_alloc,discard,journal_async_commit,errors=panic
+    chown system radio /efs
+    chmod 0771 /efs
+
+    wait /dev/block/platform/msm_sdcc.1/by-name/modem
+    mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware-modem ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
+    write /sys/kernel/boot_adsp/boot 1
+
+    wait /dev/block/platform/msm_sdcc.1/by-name/apnhlos
+    mount vfat /dev/block/platform/msm_sdcc.1/by-name/apnhlos /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
+
     # Support Preload install apks
-    # mkdir /preload 0771 system system
-    # wait /dev/block/platform/msm_sdcc.1/by-name/hidden
-    # mount ext4 /dev/block/platform/msm_sdcc.1/by-name/hidden /preload nosuid nodev ro barrier=1
-    # setprop storage.preload.complete 1
+    #mkdir /preload 0771 system system
+    #wait /dev/block/platform/msm_sdcc.1/by-name/hidden
+    #mount ext4 /dev/block/platform/msm_sdcc.1/by-name/hidden /preload nosuid nodev ro barrier=1
+    #setprop storage.preload.complete 1
 
     write /sys/kernel/boot_adsp/boot 1
     setprop qcom.audio.init complete
@@ -84,7 +102,7 @@ on fs
     # Kickstart the Wireless subsystem
     write /dev/wcnss_wlan 1
 
-    setprop ro.crypto.fuse_sdcard true
+    #setprop ro.crypto.fuse_sdcard true
 
 on post-fs-data
 
@@ -635,8 +653,6 @@ service adsprpcd /system/bin/adsprpcd
     user media
     group media
 
-on property:persist.radio.atfwd.start=false
-    stop atfwd
 
 service atfwd /system/bin/ATFWD-daemon
     class late_start
@@ -651,6 +667,7 @@ service audiod /system/bin/audiod
 service charger /charger
     class charger
     critical
+    seclabel u:r:healthd:s0
 
 on property:vold.decrypt=trigger_restart_framework
     start config_bluetooth
@@ -740,21 +757,6 @@ service qmuxd /system/bin/qmuxd
     class main
     user radio
     group radio audio bluetooth gps qcom_diag
-
-service qrngd /system/bin/qrngd -f
-    class main
-    user root
-    group root
-
-on property:sys.boot_completed=1
-    start qrngp
-
-service qrngp /system/bin/qrngp
-    class main
-    user root
-    group root
-    oneshot
-    disabled
 
 service qseecomd /system/bin/qseecomd
     class core
@@ -980,23 +982,23 @@ on property:init.svc.bootanim=stopped
     write /sys/block/mmcblk0/queue/scheduler row
 
     # Configure ondemand governor
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 50000
-    write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold 90
-    write /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy 1
-    write /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor 2
-    write /sys/devices/system/cpu/cpufreq/ondemand/down_differential 10
-    write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold_multi_core 70
-    write /sys/devices/system/cpu/cpufreq/ondemand/down_differential_multi_core 10
-    write /sys/devices/system/cpu/cpufreq/ondemand/optimal_freq 300000
-    write /sys/devices/system/cpu/cpufreq/ondemand/sync_freq 300000
-    write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold_any_cpu_load 80
-    write /sys/devices/system/cpu/cpufreq/ondemand/freq_step 20
-    write /sys/devices/system/cpu/cpufreq/ondemand/sampling_early_factor 1
-    write /sys/devices/system/cpu/cpufreq/ondemand/sampling_interim_factor 1
+    #write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "ondemand"
+    #write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "ondemand"
+    #write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "ondemand"
+    #write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor "ondemand"
+    #write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 50000
+    #write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold 90
+    #write /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy 1
+    #write /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor 2
+    #write /sys/devices/system/cpu/cpufreq/ondemand/down_differential 10
+    #write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold_multi_core 70
+    #write /sys/devices/system/cpu/cpufreq/ondemand/down_differential_multi_core 10
+    #write /sys/devices/system/cpu/cpufreq/ondemand/optimal_freq 300000
+    #write /sys/devices/system/cpu/cpufreq/ondemand/sync_freq 300000
+    #write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold_any_cpu_load 80
+    #write /sys/devices/system/cpu/cpufreq/ondemand/freq_step 20
+    #write /sys/devices/system/cpu/cpufreq/ondemand/sampling_early_factor 1
+    #write /sys/devices/system/cpu/cpufreq/ondemand/sampling_interim_factor 1
 
     # Configure interactive governor
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"

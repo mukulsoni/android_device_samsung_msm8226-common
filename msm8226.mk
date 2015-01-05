@@ -16,9 +16,6 @@
 
 LOCAL_PATH := device/samsung/msm8226-common
 
-# qcom common
-$(call inherit-product, device/samsung/qcom-common/qcom-common.mk)
-
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 # The gps config appropriate for this device
@@ -192,7 +189,8 @@ PRODUCT_PACKAGES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     init.crda.sh \
-    init.qcom.bt.sh
+    init.qcom.bt.sh \
+    init.qcom.wifi.sh
 
 PRODUCT_PACKAGES += \
     init.qcom.rc \
@@ -220,25 +218,15 @@ PRODUCT_PACKAGES += \
 # Wifi
 PRODUCT_PACKAGES += \
     dhcpcd.conf \
-    hostapd.accept \
-    hostapd.deny \
-    hostapd_default.conf \
     hostapd \
     wpa_supplicant \
     wpa_supplicant.conf
 
 PRODUCT_PACKAGES += \
-    p2p_supplicant_overlay.conf \
-    wpa_supplicant_overlay.conf
-
-PRODUCT_COPY_FILES += \
-    kernel/samsung/ms013g/drivers/staging/prima/firmware_bin/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
-    kernel/samsung/ms013g/drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
-    $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
-
-# Wifi
-PRODUCT_PACKAGES += \
     libcurl \
     libqsap_sdk \
     libQWiFiSoftApCfg \
     wcnss_service
+
+# qcom common
+$(call inherit-product, device/samsung/qcom-common/qcom-common.mk)
