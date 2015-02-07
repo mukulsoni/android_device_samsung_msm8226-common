@@ -55,6 +55,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
+# Boot animation
+TARGET_SCREEN_HEIGHT := 1280
+TARGET_SCREEN_WIDTH := 720
+
+
 # Audio
 PRODUCT_PACKAGES += \
     audiod \
@@ -114,11 +119,11 @@ PRODUCT_PACKAGES += \
     libebtc
 
 # FM
-#PRODUCT_PACKAGES += \
-#    FM2 \
-#    FMRecord \
-#    libqcomfm_jni \
-#    qcom.fmradio
+PRODUCT_PACKAGES += \
+    FM2 \
+    FMRecord \
+    libqcomfm_jni \
+    qcom.fmradio
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -200,6 +205,10 @@ PRODUCT_PACKAGES += \
     init.target.rc \
     init.carrier.rc
 
+# SamsungServiceMode
+PRODUCT_PACKAGES += \
+    SamsungServiceMode
+
 # Thermal
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/thermal-engine-8226.conf:system/etc/thermal-engine-8226.conf
@@ -226,6 +235,7 @@ PRODUCT_PACKAGES += \
     libcurl \
     libqsap_sdk \
     libQWiFiSoftApCfg \
+    libwcnss_qmi \
     wcnss_service
 
 # qcom common
