@@ -1,4 +1,3 @@
-#
 # Copyright (C) 2014 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,7 +11,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
 LOCAL_PATH := device/samsung/msm8226-common
 
@@ -59,15 +57,15 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
 
-
 # Audio
 PRODUCT_PACKAGES += \
     audiod \
     audio.a2dp.default \
     audio.primary.msm8226 \
     audio.r_submix.default \
-    audio.usb.default \
-    audio_policy.msm8226
+    audio.usb.default
+
+#audio_policy.msm8226
 
 PRODUCT_PACKAGES += \
     libaudio-resampler \
