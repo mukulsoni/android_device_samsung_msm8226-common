@@ -384,7 +384,7 @@
 	<path name="fm-speaker">
 		<path name="spk" />
 		<ctl name="RX4 Digital Volume" value="84" />
-		<ctl name="SPK DRV Volume" value="6" />
+		<ctl name="SPK DRV Volume" value="8" />
 	</path>
 
 	<path name="fm-headset">
@@ -589,13 +589,13 @@
 	<path name="voice-call-speaker">
 		<path name="spk" />
 		<ctl name="RX4 Digital Volume" value="90" />
-		<ctl name="SPK DRV Volume" value="8" />
+		<ctl name="SPK DRV Volume" value="20" />
 	</path>
 
 	<path name="voice-call-speaker-extra-vol">
 		<path name="spk" />
 		<ctl name="RX4 Digital Volume" value="90" />
-		<ctl name="SPK DRV Volume" value="8" />
+		<ctl name="SPK DRV Volume" value="20" />
 	</path>
 
 	<path name="voice-call-headset">
@@ -686,13 +686,13 @@
 	<path name="video-call-speaker">
 		<path name="spk" />
 		<ctl name="RX4 Digital Volume" value="85" />
-		<ctl name="SPK DRV Volume" value="8" />
+		<ctl name="SPK DRV Volume" value="20" />
 	</path>
 
 	<path name="video-call-speaker-extra-vol">
 		<path name="spk" />
 		<ctl name="RX4 Digital Volume" value="83" />
-		<ctl name="SPK DRV Volume" value="8" />
+		<ctl name="SPK DRV Volume" value="20" />
 	</path>
 
 	<path name="video-call-headset">
