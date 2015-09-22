@@ -11,6 +11,11 @@
 	<ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia5" value="0" />
 	<ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia10" value="0" />
 
+	<!-- cp2 call part -->
+	<ctl name="SLIM_0_RX_Voice Mixer Voice2" value="0" />
+	<ctl name="AUX_PCM_RX_Voice Mixer Voice2" value="0" />
+	<!-- end of cp2 call part -->
+
 	<ctl name="SLIM RX1 MUX" value="ZERO" />
 	<ctl name="SLIM RX2 MUX" value="ZERO" />
 	<ctl name="SLIM RX3 MUX" value="ZERO" />
@@ -88,6 +93,11 @@
 	<ctl name="DEC3 MUX" value="ZERO" />
 	<ctl name="DEC2 MUX" value="ZERO" />
 	<ctl name="DEC1 MUX" value="ZERO" />
+
+	<!-- cp2 call part -->
+	<ctl name="Voice2_Tx Mixer SLIM_0_TX_Voice2" value="0" />
+	<ctl name="Voice2_Tx Mixer AUX_PCM_TX_Voice2" value="0" />
+	<!-- end of cp2 call part -->
 
 	<!-- Audio BTSCO -->
 	<ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1" value="0" />
@@ -564,6 +574,20 @@
 	<path name="incall_music_uplink2">
 		<ctl name="Incall_Music_2 Audio Mixer MultiMedia9" value="1" />
 	</path>
+
+
+	<!-- cp2 call part -->
+	<path name="voice2-call">
+		<ctl name="SLIM_0_RX_Voice Mixer Voice2" value="1" />
+		<ctl name="Voice2_Tx Mixer SLIM_0_TX_Voice2" value="1" />
+	</path>
+
+	<path name="voice2-call bt-sco">
+		<ctl name="AUX_PCM_RX_Voice Mixer Voice2" value="1" />
+		<ctl name="Voice2_Tx Mixer AUX_PCM_TX_Voice2" value="1" />
+	</path>
+
+	<!-- end of cp2 call part -->
 
 	<!-- end of Verb -->
 
