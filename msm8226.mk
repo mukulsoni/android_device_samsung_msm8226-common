@@ -200,7 +200,8 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     ueventd.qcom.rc \
     init.target.rc \
-    init.carrier.rc
+    init.carrier.rc \
+    init.qcom.power.rc
 
 # Doze
 PRODUCT_PACKAGES += \
