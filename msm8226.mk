@@ -212,6 +212,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     SamsungServiceMode
 
+# Samsung symbols
+PRODUCT_PACKAGES += \
+    libsamsung_symbols
+
 # Thermal
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/thermal-engine-8226.conf:system/etc/thermal-engine-8226.conf
